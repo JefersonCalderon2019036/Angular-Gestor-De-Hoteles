@@ -1,0 +1,35 @@
+body {
+    background-image: url(https://images.unsplash.com/photo-1594128975188-6d0111ec3958?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=893&q=80);
+    background-size: cover;
+}
+
+.col {
+    box-shadow: 2px 1px 1px 6px black;
+    border-radius: 3%;
+    margin-top: 24%;
+    margin-bottom: 24.5%;
+    background-color: #ffff;
+}
+
+.col form {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.col form img {
+    border-radius: 50%;
+    width: 160px;
+    margin-left: 35%;
+}
+
+@media only screen and (max-width:900px) {
+    .col {
+        margin-top: 44%;
+        margin-bottom: 44%;
+    }
+    .col form img {
+        margin-left: 25%;
+    }
+}
