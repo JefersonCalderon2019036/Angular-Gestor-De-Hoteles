@@ -15,15 +15,23 @@
                 <form>
                     <img src="https://www.seekpng.com/png/detail/428-4287240_no-avatar-user-circle-icon-png.png" alt="">
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Ingrese su correo</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1">
+                        <label for="inputnombre" class="form-label">Ingrese su nombre</label>
+                        <input type="email" class="form-control" id="inputnombre" name="nombre" #nombre="ngModel" [(ngModel)]="idUsuarioModel.nombre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputusuario" class="form-label">Ingrese su usuario</label>
+                        <input type="email" class="form-control" id="inputusuario" name="usuario" #usuario="ngModel" [(ngModel)]="idUsuarioModel.usuario">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputcorreo" class="form-label">Ingrese su correo</label>
+                        <input type="email" class="form-control" id="inputcorreo" name="email" #email="ngModel" [(ngModel)]="idUsuarioModel.email">
                         <div id="emailHelp" class="form-text">Nunca compartiremos su correo electrónico con nadie más.</div>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Ingrese su contraseña</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                        <label for="inputpassword" class="form-label">Ingrese su contraseña</label>
+                        <input type="password" class="form-control" id="inputpassword" name="password" #password="ngModel" [(ngModel)]="idUsuarioModel.password">
                     </div>
-                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                    <button type="submit" class="btn btn-primary" (click)="AgregarUsuario()">Ingresar</button>
                 </form>
             </div>
         </div>
