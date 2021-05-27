@@ -1,0 +1,98 @@
+<hr>
+<h1 style="text-align: center; ">Detalles de la habitación</h1>
+<hr>
+<br>
+<div style="width: 80%; margin-left: 10%; display: flex;">
+    <div class="datos" style="width: 50%">
+        <div class="mb-6">
+            <label for="inputcorrreo1" class="form-label" style="text-decoration: none; font-size:large;"><a style="text-decoration: none; font-size:large; color: blue;">Nombre del evento: </a> {{habitacion.nombre}}</label>
+        </div>
+        <br>
+        <div class="mb-6">
+            <label for="inputcorrreo1" class="form-label" style="text-decoration: none; font-size:large;"><a style="text-decoration: none; font-size:large; color: blue;">Detalles: </a> {{habitacion.detalles}}</label>
+        </div>
+        <br>
+        <div class="mb-6">
+            <label for="inputcorrreo1" class="form-label" style="text-decoration: none; font-size:large;"><a style="text-decoration: none; font-size:large; color: blue;">Cantidad de cuartos: </a> {{habitacion.Cuartos}}</label>
+            <div id="emailHelp" class="form-text">En cada una de las habitaciones tiene un limite de cuartos que se describe aqui.</div>
+        </div>
+        <br>
+        <div class="mb-6">
+            <label for="inputcorrreo1" class="form-label" style="text-decoration: none; font-size:large;"><a style="text-decoration: none; font-size:large; color: blue;">Cantidad de personas: </a> {{habitacion.cantidadepersonas}}</label>
+            <div id="emailHelp" class="form-text">Este es el limite de personas que permite el hotel por cada habitación de este tipo.</div>
+        </div>
+        <br>
+        <div class="mb-6">
+            <label for="inputcorrreo1" class="form-label" style="text-decoration: none; font-size:large;"><a style="text-decoration: none; font-size:large; color: blue;">Costo: $</a> {{habitacion.valor}} por noche</label>
+        </div>
+    </div>
+    <img src="{{habitacion.imagen}}" style="width: 40%; border-radius: 20%; margin-left: 10%; box-shadow: 3px 3px 5px black;">
+</div>
+<br>
+<hr>
+<button type="button" class="btn btn-primary" style="width: 20%; margin-left:15%">Comentar</button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#EditarHabitacion" style="width: 20%; margin-left: 2%">Editar</button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalELiminar" style="width: 20%; margin-left: 2%">Eliminar</button>
+<hr>
+
+<div class="modal fade" id="ModalELiminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar esta habitacion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Esta seguro que desea eliminar esta habitación.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" routerLink="/principal" routerLinkActive="active" (click)="EliminarHabitacion()"> Si </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="EditarHabitacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Una Habitación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="inputnombre" class="form-label">Nombre de la habitación:</label>
+                        <input type="email" class="form-control" id="inputnombre" name="nombre" #nombre="ngModel" [(ngModel)]="IdHabitacionModel.nombre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputCuartos" class="form-label">Cuartos:</label>
+                        <input type="email" class="form-control" id="inputCuartos" name="Cuartos" #Cuartos="ngModel" [(ngModel)]="IdHabitacionModel.Cuartos">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputcantidaddepersonas" class="form-label">Cantidad de personas:</label>
+                        <input type="email" class="form-control" id="inputcantidaddepersonas" name="cantidaddepersonas" #cantidaddepersonas="ngModel" [(ngModel)]="IdHabitacionModel.cantidaddepersonas">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputdetalles" class="form-label">Detalles:</label>
+                        <input type="email" class="form-control" id="inputdetalles" name="detalles" #detalles="ngModel" [(ngModel)]="IdHabitacionModel.detalles">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputvalor" class="form-label">Valor en $:</label>
+                        <input type="email" class="form-control" id="inputvalor" name="valor" #valor="ngModel" [(ngModel)]="IdHabitacionModel.valor">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputimagen" class="form-label">Imagen:</label>
+                        <input type="email" class="form-control" id="inputimagen" name="imagen" #imagen="ngModel" [(ngModel)]="IdHabitacionModel.imagen">
+                        <div id="emailHelp" class="form-text">Solo puedes ingresar una imagen si es un url</div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="EditarHabitas()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,93 @@
-<p>detalles works!</p>
+<hr>
+<h1 style="text-align: center; font-family: 'Pattaya', sans-serif;">Detalles del evento</h1>
+<hr>
+<div style="width: 80%; margin-left: 10%; display: flex;">
+    <div class="datos" style="width: 50%">
+        <div class="mb-6">
+            <label for="inputcorrreo1" class="form-label" style="text-decoration: none; font-size:large;"><a style="text-decoration: none; font-size:large; color: blue;">Nombre del evento: </a> {{eventosnull.nombre}}</label>
+        </div>
+        <br>
+        <div class="mb-6">
+            <label for="inputcorrreo1" class="form-label" style="text-decoration: none; font-size:large;"><a style="text-decoration: none; font-size:large; color: blue;">Detalles: </a> {{eventosnull.detalles}}</label>
+        </div>
+        <br>
+        <div class="mb-6">
+            <label for="inputcorrreo1" class="form-label" style="text-decoration: none; font-size:large;"><a style="text-decoration: none; font-size:large; color: blue;">Cantidad de personas: </a> {{eventosnull.cantidadepersonas}}</label>
+            <div id="emailHelp" class="form-text">Cada uno de los eventos puente tener un limite de personas para su ingreso, si este es 0 o indefinido permite que cualquier personas pueda ingresar.</div>
+        </div>
+        <br>
+        <div class="mb-6">
+            <label for="inputcorrreo1" class="form-label" style="text-decoration: none; font-size:large;"><a style="text-decoration: none; font-size:large; color: blue;">Costo: $</a> {{eventosnull.valor}}</label>
+        </div>
+    </div>
+    <img src="{{eventosnull.imagen}}" style="width: 40%; border-radius: 20%; margin-left: 10%; box-shadow: 3px 3px 5px black;">
+</div>
+<br>
+<hr>
+
+<button type="button" class="btn btn-primary" style="width: 20%; margin-left:15%">Comentar</button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modaleditar" style="width: 20%; margin-left: 2%">Editar</button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalELiminar" style="width: 20%; margin-left: 2%">Eliminar</button>
+
+<hr>
+<h3 style="margin-left: 5%;">Comentarios: </h3>
+
+<!-- Modal eliminar-->
+<div class="modal fade" id="ModalELiminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar evento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Seguro que desea eliminar este evento?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" routerLink="/principal" routerLinkActive="active" (click)="EliminarEvento()">si</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--- modal editar --->
+<div class="modal fade" id="modaleditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Editar evento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="inputNombre" class="form-label">Nombre del evento</label>
+                        <input type="email" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel" [(ngModel)]="IdEventoModel.nombre">
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputCantidadDePersonas" class="form-label">Cantidad De Personas</label>
+                        <input type="email" class="form-control" id="InputCantidadDePersonas" name="cantidadepersonas" #cantidadepersonas="ngModel" [(ngModel)]="IdEventoModel.cantidadepersonas">
+                    </div>
+                    <div class=" mb-3 ">
+                        <label for="InputDetalles " class="form-label ">Detalles</label>
+                        <input type="email " class="form-control " id="InputDetalles " name="detalles" #detalles="ngModel" [(ngModel)]="IdEventoModel.detalles">
+                    </div>
+                    <div class="mb-3 ">
+                        <label for="InputValor " class="form-label ">Valor</label>
+                        <input type="email " class="form-control " id="InputValor " name="valor" #valor="ngModel" [(ngModel)]="IdEventoModel.valor">
+                    </div>
+                    <div class="mb-3 ">
+                        <label for="InputImagen " class="form-label ">Imagenes</label>
+                        <input type="email " class="form-control " id="InputImagen " name="imagen" #imagen="ngModel" [(ngModel)]="IdEventoModel.imagen">
+                        <div id="emailHelp" class="form-text">Para poder ingresar una imagen debe ingresar la url de la imagen</div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)=" EditarEvento()">Actualizar</button>
+            </div>
+        </div>
+    </div>
+</div>

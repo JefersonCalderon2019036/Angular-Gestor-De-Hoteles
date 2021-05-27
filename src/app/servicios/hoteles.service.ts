@@ -40,12 +40,23 @@ export class HotelesService {
     let EncabezadoToken = this.Encabezado.set('Authorization',this.getToken())
     return this._http.get(this.url+"VerSoloUnHotel/"+this.getHotel(),{headers: EncabezadoToken})
   }
+
+  VerElHotel2(id: string): Observable<any>{
+    let EncabezadoToken = this.Encabezado.set('Authorization',this.getToken())
+    return this._http.get(this.url+"VerSoloUnHotel/"+id,{headers: EncabezadoToken})
+  }
   
   //editar el hotel 
   EditarHotel(hotel: Hoteles): Observable<any>{
     let params = JSON.stringify(hotel);
     let EncabezadoToken = this.Encabezado.set('Authorization',this.getToken())
-    return this._http.put(this.url+"EditarHotel/"+this.getUsuario()+"/"+this.getHotel(), params, {headers: EncabezadoToken})
+    return this._http.put(this.url+"EditarHotel/"+this.getUsuario()+"/"+this.getHotel(), params,{headers: EncabezadoToken})
+  }
+
+  //eliminar el hotel
+  EliminarHotel(): Observable<any>{
+    let EncabezadoToken = this.Encabezado.set('Authorization',this.getToken())
+    return this._http.delete(this.url+"EliminarUnHotel/"+this.getUsuario()+"/"+this.getHotel(), {headers: EncabezadoToken})
   }
 
   //obtenemos el token

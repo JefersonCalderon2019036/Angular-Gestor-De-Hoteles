@@ -42,7 +42,7 @@
     <div class="botones" style="margin-left: 5%;">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AgregarUnHabitacion"><i class="bi bi-arrow-up-circle-fill" style="margin-right: 5%;"></i>Agregar Habitación</button>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AgregarUnEventoModal"><i class="bi bi-arrow-up-circle-fill" style="margin-right: 5%;"></i>Agregar Evento</button>
-        <button type="button" class="btn btn-primary"><i class="bi bi-border-width" style="margin-right: 5%;"></i> Editar Hotel</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#EditarHotel"><i class="bi bi-border-width" style="margin-right: 5%;"></i> Editar Hotel</button>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modaleliminarhotel"><i class="bi bi-backspace-reverse" style="margin-right: 5%;"></i>Eliminar</button>
     </div>
     <br>
@@ -62,7 +62,7 @@
                         <p class="card-text">No. Personas: {{hab.cantidadepersonas}}</p>
                         <hr>
                         <p class="card-text">Detalles: {{hab.detalles}}</p>
-                        <a href="#" class="btn btn-primary" style="width: 90%; margin-left: 5%;">Ver Mas</a>
+                        <a href="#" class="btn btn-primary" routerLink="/detalles2" routerLinkActive="active" (click)="VerSoloUnaHabitacion(hab._id)" style="width: 90%; margin-left: 5%;">Ver Mas</a>
                     </div>
                 </div>
             </div>
@@ -82,7 +82,7 @@
                         <p class="card-text">No. Personas: {{eve.cantidadepersonas}}</p>
                         <hr>
                         <p class="card-text">Detalles: {{eve.detalles}}</p>
-                        <a href="#" class="btn btn-primary" style="width: 90%; margin-left: 5%;">Ver Mas</a>
+                        <a href="#" class="btn btn-primary" routerLink="/detalles" routerLinkActive="active" (click)="VerSoloUnEvento(eve._id)" style="width: 90%; margin-left: 5%;">Ver Mas</a>
                     </div>
                 </div>
             </div>
@@ -220,7 +220,57 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Si</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" routerLink="/principal" routerLinkActive="active" (click)="EliminarHotel()">Si</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--- Editar modal --->
+    <div class="modal fade" id="EditarHotel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar este hotel</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="inputNombre" class="form-label">Ingrese el nombre del hotel</label>
+                            <input type="email" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel" [(ngModel)]="IdHotelModel.nombre">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputCorreo" class="form-label">Ingrese el correo del hotel</label>
+                            <input type="email" class="form-control" id="inputCorreo" name="email" #email="ngModel" [(ngModel)]="IdHotelModel.email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputPais" class="form-label">Ingrese el pais del hotel</label>
+                            <input type="email" class="form-control" id="inputHotel" name="pais" #pais="ngModel" [(ngModel)]="IdHotelModel.pais">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputCiudad" class="form-label">Ingrese la ciudad del hotel</label>
+                            <input type="email" class="form-control" id="inputPais" name="ciudad" #ciudad="ngModel" [(ngModel)]="IdHotelModel.ciudad">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputNombre" class="form-label">Ingrese la direccion completa del hotel</label>
+                            <input type="email" class="form-control" id="inputCiudad" name="direccion" #direccion="ngModel" [(ngModel)]="IdHotelModel.direccion">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputTelefono" class="form-label">Ingrese el numero de telefono del hotel</label>
+                            <input type="email" class="form-control" id="inputTelefono" name="Telefonos" #Telefonos="ngModel" [(ngModel)]="IdHotelModel.Telefonos">
+                            <div id="emailHelp" class="form-text">Tiene que ingresar el numero de extención del celular</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputImag" class="form-label">Ingrese una imagen de hotel</label>
+                            <input type="email" class="form-control" id="inputImag" name="imagenes" #imagenes="ngModel" [(ngModel)]="IdHotelModel.imagenes">
+                            <div id="emailHelp" class="form-text">Tiene que ingresar la url de la imagen</div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">cerrar</button>
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="EditarHotel()">aguardar</button>
                 </div>
             </div>
         </div>

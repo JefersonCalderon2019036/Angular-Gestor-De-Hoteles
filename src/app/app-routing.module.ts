@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContactanosComponent } from './componentes/contactanos/contactanos.component';
 import { DetallesComponent } from './componentes/detalles/detalles.component';
+import { Detalles2Component } from './componentes/detalles2/detalles2.component';
 import { HistorialComponent } from './componentes/historial/historial.component';
 import { HotelesComponent } from './componentes/hoteles/hoteles.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: "usuarios", component: UsuariosComponent},
   {path: "hoteles", component: HotelesComponent},
   {path: "detalles", component: DetallesComponent},
+  {path: "detalles2", component: Detalles2Component},
   {path: "historial", component: HistorialComponent},
   {path: "contactanos", component: ContactanosComponent},
   {path: "**", component: InicioComponent}

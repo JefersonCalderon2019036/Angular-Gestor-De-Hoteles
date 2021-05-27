@@ -99,4 +99,26 @@ export class PrincipalComponent implements OnInit {
       }
     )
   }
-}
+
+  VerSoloUnEvento(id: any){
+    this._EventosServices.VerSoloUnEvento(id).subscribe(
+      response => {
+        this.token = response.EventoEncontrado._id;
+        localStorage.setItem('evento',this.token)
+      }, error => {
+        console.log(<any>error)
+      }
+    )
+    }
+
+    VerSoloUnaHabitacion(id: any){
+      this._HabitacionService.VerHabitacionPorId(id).subscribe(
+        response => {
+          this.token = response.HabitacionEncontrada._id;
+          localStorage.setItem('habitacion',this.token)
+        }, error => {
+          console.log(<any>error)
+        }
+      )
+    }
+  }

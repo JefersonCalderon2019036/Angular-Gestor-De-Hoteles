@@ -6,10 +6,10 @@
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="https://www.guatemala.com/fotos/201706/Vinas-Hotel-Restaurante-Pool1-885x500.jpg" class="d-block w-100" alt="...">
+            <img src="https://pueblosmexico.com.mx/IMG/arton30649.jpg" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-            <img src="https://www.guatemala.com/fotos/201704/Las-Lagunas-Boutieque-Hotel2-885x500.jpg" class="d-block w-100" alt="...">
+            <img src="https://centrourbano.com/revista/wp-content/uploads/hotel--735x400.jpg" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
             <img src="https://www.guatemala.com/fotos/201705/Hotel-Grand-Kamel-885x500.jpg" class="d-block w-100" alt="...">
@@ -72,7 +72,7 @@
                     <p class="card-text">No. Personas: {{hab.cantidadepersonas}}</p>
                     <hr>
                     <p class="card-text">Detalles: {{hab.detalles}}</p>
-                    <a href="#" class="btn btn-primary">Ver Mas</a>
+                    <a href="#" class="btn btn-primary" routerLink="/detalles2" routerLinkActive="active" (click)="VerSoloUnaHabitacion(hab._id)">Ver Mas</a>
                 </div>
             </div>
         </div>
@@ -94,7 +94,7 @@
                     <p class="card-text">No. Personas: {{hab.cantidadepersonas}}</p>
                     <hr>
                     <p class="card-text">Detalles: {{hab.detalles}}</p>
-                    <a href="#" class="btn btn-primary">Ver Mas</a>
+                    <a href="#" class="btn btn-primary" routerLink="/detalles" routerLinkActive="active" (click)="VerSoloUnEvento(hab._id)">Ver Mas</a>
                 </div>
             </div>
         </div>

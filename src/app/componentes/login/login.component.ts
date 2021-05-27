@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
         this.identidad = response.usuarioEncontrado._id;
         localStorage.setItem('token', this.token);
         localStorage.setItem('Identidad', this.identidad);
-        localStorage.setItem('rol', this.rol);
         this._router.navigate(['/principal'])
       },
       (error) => {

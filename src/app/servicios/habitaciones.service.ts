@@ -29,12 +29,37 @@ export class HabitacionesService {
     return this._http.get(this.url+"VerHabitacionPorHotel/"+this.getHotel(),{headers: EncabezadoToken})
   }
 
+  //funcion para traer un usuario por id
+  VerHabitacionPorId(id: string): Observable<any>{
+    let EncabezadoToken = this.Encabezado.set('Authorization',this.getToken())
+    return this._http.get(this.url+"VerHabitacionPorid/"+id,{headers: EncabezadoToken})
+  }
+
+  //funcion para traer un usuario por id
+  VerHabitacionPorIdp(): Observable<any>{
+    let EncabezadoToken = this.Encabezado.set('Authorization',this.getToken())
+    return this._http.get(this.url+"VerHabitacionPorid/"+this.getHabitacion(),{headers: EncabezadoToken})
+  }
+
   //agregar una nueva habitaciones
   AgregarUnaNuevaHabitacion(habitaciones: Habitacion): Observable<any>{
     habitaciones.IdHotel = this.getHotel();
     let params = JSON.stringify(habitaciones);
     let EncabezadoToken = this.Encabezado.set('Authorization',this.getToken())
     return this._http.post(this.url+"AgregarUnHabitacion/"+this.getUsuario(), params, {headers: EncabezadoToken})
+  }
+
+  //eliminar una habitaciones
+  EliminarUnaHabitacion(): Observable<any>{
+    let EncabezadoToken = this.Encabezado.set('Authorization',this.getToken())
+    return this._http.delete(this.url+"EliminarHabitacion/"+this.getUsuario()+"/"+this.getHabitacion(), {headers: EncabezadoToken})
+  }
+
+  //funcion editar habitacionesmodelo
+  EditarUnaHabitacion(habitaciones: Habitacion): Observable<any>{
+    let params = JSON.stringify(habitaciones);
+    let EncabezadoToken = this.Encabezado.set('Authorization',this.getToken())
+    return this._http.put(this.url+"EditarHabitacion/"+this.getUsuario()+"/"+this.getHabitacion(), params, {headers: EncabezadoToken})
   }
 
   //obtenemos el token
@@ -62,6 +87,16 @@ export class HabitacionesService {
   //obtenemos el id de hotel
   getHotel(){
     var token2 = localStorage.getItem('hotel');
+    if(token2 != 'undefined'){
+      this.token = token2;
+    }else{
+      this.token = null;
+    }
+    return this.token;
+  }
+
+  getHabitacion(){
+    var token2 = localStorage.getItem('habitacion');
     if(token2 != 'undefined'){
       this.token = token2;
     }else{
