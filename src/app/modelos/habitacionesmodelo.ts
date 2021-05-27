@@ -7,7 +7,7 @@ export class Habitacion{
         public Cuartos: Number,
         public cantidaddepersonas: Number,
         public detalles: String,
-        public img: String,
+        public imagen: String,
         public valor: Number,
         public listaComentarios: [{
             textoComentario: String,

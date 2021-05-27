@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContactanosComponent } from './componentes/contactanos/contactanos.component';
 import { DetallesComponent } from './componentes/detalles/detalles.component';
 import { HistorialComponent } from './componentes/historial/historial.component';
+import { HotelesComponent } from './componentes/hoteles/hoteles.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { PerfilComponent } from './componentes/perfil/perfil.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: "principal", component: PrincipalComponent},
   {path: "registrar", component: RegistrarComponent},
   {path: "usuarios", component: UsuariosComponent},
+  {path: "hoteles", component: HotelesComponent},
   {path: "detalles", component: DetallesComponent},
   {path: "historial", component: HistorialComponent},
   {path: "contactanos", component: ContactanosComponent},

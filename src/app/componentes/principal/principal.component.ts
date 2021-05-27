@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Eventos } from 'src/app/modelos/eventos.model';
 import { Habitacion } from 'src/app/modelos/habitacionesmodelo';
 import { Hoteles } from 'src/app/modelos/hotelesmodelo';
 import { Usuario } from 'src/app/modelos/usuariomodelo';
+import { EventosService } from 'src/app/servicios/eventos.service';
 import { HabitacionesService } from 'src/app/servicios/habitaciones.service';
 import { HotelesService } from 'src/app/servicios/hoteles.service';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
@@ -21,20 +23,15 @@ export class PrincipalComponent implements OnInit {
   public identidad: any;
   public idUsuarioModel: Usuario;
   public idhotelesModel: Hoteles;
-  public idhabitacionesModel: Habitacion;
   public habitaciones: any;
+  public eventos: any;
   
   constructor(private _UsuarioService: UsuarioService,
     private _HotelesService:  HotelesService,
-    private _HabitacionService: HabitacionesService) {
+    private _HabitacionService: HabitacionesService,
+    private _EventosServices: EventosService) {
     this.idUsuarioModel = new Usuario("","","","","","","");
     this.idhotelesModel = new Hoteles("","","","","","","","");
-    this.idhabitacionesModel = new Habitacion("","","","",0,0,"","",0,[{
-                                                  textoComentario: "",
-                                                  calificacionhabitacion: 0,
-                                                  calificacionservicio: 0,
-                                                  idUsuarioComentario: ""
-                                              }],0,0,0,0);
     this.token = this._UsuarioService.getToken();
     this.identidad = this._UsuarioService.getUsuario();
    }
@@ -42,6 +39,7 @@ export class PrincipalComponent implements OnInit {
   ngOnInit(): void {
     this.VerTodosLosHoteles();
     this.VerTadasLasHabitaciones();
+    this.VerTodosLosEventos();
   }
 
   //metodo para crear un una nueva habitacion
@@ -72,8 +70,32 @@ export class PrincipalComponent implements OnInit {
     this._HabitacionService.VerTodasLasHabitaciones(this.token).subscribe(
       response => {
         this.habitaciones = response.hotelencontrado;
+        console.log(response)
       }, error => {
         console.log(<any>error);
+      }
+    )
+  }
+
+  //funcion para ver todos los eventos
+  VerTodosLosEventos(){
+    this._EventosServices.VerTodosLosEventos(this.token).subscribe(
+      response => {
+        this.eventos = response.eventosencontrados;
+      },error => {
+        console.log(<any>error)
+      }
+    )
+  }
+
+  //almacenamos el id del hotel seleccionado en el local storage
+  VerSoloUnHotel(id: any){
+    this._HotelesService.VerSoloUnHotel(this.token,id).subscribe(
+      reponse => {
+        this.token = reponse.hotelencontrado._id;
+        localStorage.setItem('hotel',this.token)
+      }, error => {
+        console.log(<any>error)
       }
     )
   }

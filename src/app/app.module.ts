@@ -15,6 +15,7 @@ import { PerfilComponent } from './componentes/perfil/perfil.component';
 import { DetallesComponent } from './componentes/detalles/detalles.component';
 import { HistorialComponent } from './componentes/historial/historial.component';
 import { RegistrarComponent } from './componentes/registrar/registrar.component';
+import { HotelesComponent } from './componentes/hoteles/hoteles.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { RegistrarComponent } from './componentes/registrar/registrar.component'
     PerfilComponent,
     DetallesComponent,
     HistorialComponent,
-    RegistrarComponent
+    RegistrarComponent,
+    HotelesComponent
   ],
   imports: [
     BrowserModule,

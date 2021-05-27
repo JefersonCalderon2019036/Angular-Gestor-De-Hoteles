@@ -6,6 +6,6 @@ export class Usuario {
         public email: String,
         public password: String,
         public rol: String,
-        public imgen: String
+        public imagen: String
     ){}
 }

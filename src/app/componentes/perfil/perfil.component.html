@@ -1,1 +1,114 @@
-<p>perfil works!</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-image: url(https://images.unsplash.com/photo-1485217988980-11786ced9454?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80); background-size: cover;">
+    <hr>
+    <h1 style="text-align: center; font-family: 'Pattaya', sans-serif; color: #ffff; margin-top: 5%;">Mi Perfil De Usuario</h1>
+    <hr style="color:white">
+    <div class="informacion-general" style="display: flex; margin-top: 5%; margin-botton: 10%;">
+        <div class="todos-del-perfil" style="margin-left: 2%; width:50%; background-color: #ffff; border-radius: 5%; box-shadow: 3px 3px 4px black;">
+            <form style="width: 80%; margin-left:10%; margin-top:5%">
+                <div class="mb-3">
+                    <label for="inputNombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel" [(ngModel)]="idUsuarioModel.nombre" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="inputUsuario" class="form-label">Usuario</label>
+                    <input type="text" class="form-control" id="inputUsuario" name="usuario" #usuario="ngModel" [(ngModel)]="idUsuarioModel.usuario" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Correo</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" name="email" #email="ngModel" [(ngModel)]="idUsuarioModel.email" disabled>
+                </div>
+                <div class="mb-3">
+                    <label for="inputrol" class="form-label">Rol</label>
+                    <input type="email" class="form-control" id="inputrol" name="rol" #rol="ngModel" [(ngModel)]="idUsuarioModel.rol" disabled>
+                </div>
+            </form>
+        </div>
+        <img src="{{idUsuarioModel.imagen}}" alt="" class="foto-de-perfil" style="width: 30%; margin-right: 5%; margin-left: 10%; border-radius: 50%; box-shadow: 3px 3px 4px black;">
+    </div>
+    <br>
+    <hr style="color:aqua">
+    <div class="botones">
+        <button type="button" class="btn btn-primary" style="width: 40%; margin-left:5%" data-bs-toggle="modal" data-bs-target="#ModalEditar">Editar perfil</button>
+        <button type="button" class="btn btn-primary" style="width: 40%; margin-left:5%" data-bs-toggle="modal" data-bs-target="#ModalEliminar">Eliminar perfil</button>
+    </div>
+    <hr style="color:aqua">
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="modal fade" id="ModalEditar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Ingresa los datos que vas a cambiar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form style="width: 80%; margin-left:10%; margin-top:5%">
+                        <div class="mb-3">
+                            <label for="inputNombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel" [(ngModel)]="idUsuarioModel.nombre">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputUsuario" class="form-label">Usuario</label>
+                            <input type="text" class="form-control" id="inputUsuario" name="usuario" #usuario="ngModel" [(ngModel)]="idUsuarioModel.usuario">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Correo</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" name="email" #email="ngModel" [(ngModel)]="idUsuarioModel.email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputrol" class="form-label">Rol</label>
+                            <input type="email" class="form-control" id="inputrol" name="rol" #rol="ngModel" [(ngModel)]="idUsuarioModel.rol" disabled>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputrol" class="form-label">Imagen</label>
+                            <input type="email" class="form-control" id="inputrol" name="imagen" #imagen="ngModel" [(ngModel)]="idUsuarioModel.imagen">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="EditarTuPerfil()">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="ModalEliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Eliminar perfil</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Deseas eliminiar tu perfil?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="EliminarMiPerfil()">Si</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

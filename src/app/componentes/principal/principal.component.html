@@ -27,7 +27,7 @@
 <h1 class="titulo">Gestor De Hoteles</h1>
 <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#ModalHoteles" style="margin-left: 3%;"><i class="bi bi-plus-circle-fill"></i>  Agregar un nuevo hotel</button>
 <button class="btn btn-primary" type="button" style="margin-left: 1%;"><i class="bi bi-award"></i>  Mira tu historial de reservaciones</button>
-<button class="btn btn-primary" type="button" style="margin-left: 1%;"><i class="bi bi-award"></i>  Edita tu perfil</button>
+<button class="btn btn-primary" type="button" style="margin-left: 1%;" routerLink="/perfil" routerLinkActive="active"><i class="bi bi-award"></i>  Edita tu perfil</button>
 <button class="btn btn-primary" type="button" style="margin-left: 1%;" routerLink="/usuarios" routerLinkActive="active"><i class="bi bi-award"></i>  Usuarios</button>
 
 <hr>
@@ -47,7 +47,7 @@
                     <p class="card-text">{{hot.pais}}</p>
                     <hr>
                     <p class="card-text">{{hot.ciudad}}</p>
-                    <a href="#" class="btn btn-primary">Ver Mas</a>
+                    <a href="#" class="btn btn-primary" routerLink="/hoteles" routerLinkActive="active" (click)="VerSoloUnHotel(hot._id)">Ver Mas</a>
                 </div>
             </div>
         </div>
@@ -79,12 +79,54 @@
     </div>
 </div>
 
+<hr>
+<h2 class="titulo2">Nuevos eventos cada día</h2>
+<hr>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4" *ngFor="let hab of eventos">
+            <div class="card" style="width: 100%; box-shadow: 2px 2px 2px 2px aqua; margin-top: 6%;">
+                <img src="{{hab.imagen}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{hab.nombre}}</h5>
+                    <hr>
+                    <p class="card-text">No. Personas: {{hab.cantidadepersonas}}</p>
+                    <hr>
+                    <p class="card-text">Detalles: {{hab.detalles}}</p>
+                    <a href="#" class="btn btn-primary">Ver Mas</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>b
+<br>
+<div class="infor-hotel " style="width:100%; background-image: url(https://images.unsplash.com/photo-1547980562-3c008cd4b769?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80); background-size: cover; ">
+    <br>
+    <div class="card text-dark bg-light mb-3 " style="max-width: 30rem; margin-top: 5%; margin-bottom: 5%; margin-left: 2%; ">
+        <div class="card-header ">Encuentra el hotel ideal</div>
+        <div class="card-body ">
+            <ul>
+                <li style=" ">
+                    <p style="margin-left: 2%; font-size: smaller; ">Millones de opiniones de huéspedes verificadas</p>
+                </li>
+                <li style=" ">
+                    <p style="margin-left: 2%; font-size: smaller; ">Configura las alertas de precios para realizar un seguimiento de precios</p>
+                </li>
+                <li style=" ">
+                    <p style="margin-left: 2%; font-size: smaller; ">Crea una cuenta para acceder a ofertas exclusivas</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <br>
+</div>
 <!---Modal para registrar nuevos hoteles -->
 <div class="modal fade" id="ModalHoteles" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar Habitación</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Hotel</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

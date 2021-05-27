@@ -29,4 +29,55 @@ export class HotelesService {
     let EncabezadoToken = this.Encabezado.set('Authorization',token)
     return this._http.post(this.url+"RegistrarHotel/"+identidad, params,{headers: EncabezadoToken})
   }
+
+  //ver solo un hoteles
+  VerSoloUnHotel(token: string, id: string): Observable<any>{
+    let EncabezadoToken = this.Encabezado.set('Authorization',token)
+    return this._http.get(this.url+"VerSoloUnHotel/"+id,{headers: EncabezadoToken})
+  }
+
+  VerElHotel(): Observable<any>{
+    let EncabezadoToken = this.Encabezado.set('Authorization',this.getToken())
+    return this._http.get(this.url+"VerSoloUnHotel/"+this.getHotel(),{headers: EncabezadoToken})
+  }
+  
+  //editar el hotel 
+  EditarHotel(hotel: Hoteles): Observable<any>{
+    let params = JSON.stringify(hotel);
+    let EncabezadoToken = this.Encabezado.set('Authorization',this.getToken())
+    return this._http.put(this.url+"EditarHotel/"+this.getUsuario()+"/"+this.getHotel(), params, {headers: EncabezadoToken})
+  }
+
+  //obtenemos el token
+  getToken(){
+    var token2 = localStorage.getItem('token');
+    if(token2 != 'undefined'){
+      this.token = token2;
+    }else{
+      this.token = null;
+    }
+    return this.token;
+  }
+
+  //obtenemos el id del usuario registrado
+  getUsuario(){
+    var token2 = localStorage.getItem('Identidad');
+    if(token2 != 'undefined'){
+      this.token = token2;
+    }else{
+      this.token = null;
+    }
+    return this.token;
+  }
+
+  //obtenemos el id de hotel
+  getHotel(){
+    var token2 = localStorage.getItem('hotel');
+    if(token2 != 'undefined'){
+      this.token = token2;
+    }else{
+      this.token = null;
+    }
+    return this.token;
+  }
 }

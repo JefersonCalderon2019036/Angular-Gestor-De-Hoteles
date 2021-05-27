@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <hr>
+    <h1 style="text-align: center; font-family: 'Pattaya', sans-serif;">Detalles del hotel</h1>
+    <hr>
+    <div class="contenedor-de-datos-hotel" style="width: 80%; margin-left: 10%; display: flex;">
+        <form style="width: 50%; margin-right: 10%; margin-top: 3%;">
+            <div class="mb-6">
+                <label for="inputcorrreo1" class="form-label"><a style="text-decoration: none; font-size:medium; color: blue;">Nombre del hotel: </a> {{hotel.nombre}}</label>
+            </div>
+            <div class="mb-6">
+                <label for="inputcorrreo1" class="form-label"><a style="text-decoration: none; font-size:medium; color: blue;">Correo del hotel: </a> {{hotel.email}}</label>
+            </div>
+            <div class="mb-6">
+                <label for="inputpais1" class="form-label"><a style="text-decoration: none; font-size:medium; color: blue;">Pais del hotel: </a>{{hotel.pais}}</label>
+            </div>
+            <div class="mb-6">
+                <label for="inputciudad1" class="form-label"><a style="text-decoration: none; font-size:medium; color: blue;">Ciudad del hotel: </a>{{hotel.ciudad}}</label>
+            </div>
+            <div class="mb-6">
+                <label for="inputdireccion1" class="form-label"><a style="text-decoration: none; font-size:medium; color: blue;">Dirección del hotel: </a>{{hotel.direccion}}</label>
+            </div>
+            <div class="mb-6">
+                <label for="inputtelefono1" class="form-label"><a style="text-decoration: none; font-size:medium; color: blue;">Telefono: </a>{{hotel.Telefonos}}</label>
+
+            </div>
+        </form>
+        <img src="{{hotel.imagenes}}" style="width: 30%; border-radius: 10%; box-shadow: 3px 3px 5px black;">
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div class="botones" style="margin-left: 5%;">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AgregarUnHabitacion"><i class="bi bi-arrow-up-circle-fill" style="margin-right: 5%;"></i>Agregar Habitación</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AgregarUnEventoModal"><i class="bi bi-arrow-up-circle-fill" style="margin-right: 5%;"></i>Agregar Evento</button>
+        <button type="button" class="btn btn-primary"><i class="bi bi-border-width" style="margin-right: 5%;"></i> Editar Hotel</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modaleliminarhotel"><i class="bi bi-backspace-reverse" style="margin-right: 5%;"></i>Eliminar</button>
+    </div>
+    <br>
+    <hr>
+    <h2 style="margin-left: 5%;">Todas sus habitaciones</h2>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4" *ngFor="let hab of habitaciones">
+                <div class="card" style="width: 100%; box-shadow: 2px 2px 2px 2px aqua; margin-top: 6%;">
+                    <img src="{{hab.imagen}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{hab.nombre}}</h5>
+                        <hr>
+                        <p class="card-text">No. Cuartos:{{hab.Cuartos}}</p>
+                        <hr>
+                        <p class="card-text">No. Personas: {{hab.cantidadepersonas}}</p>
+                        <hr>
+                        <p class="card-text">Detalles: {{hab.detalles}}</p>
+                        <a href="#" class="btn btn-primary" style="width: 90%; margin-left: 5%;">Ver Mas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <h2 style="margin-left: 5%;">Todos los eventos</h2>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4" *ngFor="let eve of eventos">
+                <div class="card" style="width: 100%; box-shadow: 2px 2px 2px 2px aqua; margin-top: 6%;">
+                    <img src="{{eve.imagen}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{eve.nombre}}</h5>
+                        <hr>
+                        <p class="card-text">No. Personas: {{eve.cantidadepersonas}}</p>
+                        <hr>
+                        <p class="card-text">Detalles: {{eve.detalles}}</p>
+                        <a href="#" class="btn btn-primary" style="width: 90%; margin-left: 5%;">Ver Mas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="infor-hotel " style="width:100%; background-image: url(https://images.unsplash.com/photo-1547980562-3c008cd4b769?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80); background-size: cover; ">
+        <br>
+        <div class="card text-dark bg-light mb-3 " style="max-width: 30rem; margin-top: 5%; margin-bottom: 5%; margin-left: 2%; ">
+            <div class="card-header ">Encuentra el hotel ideal</div>
+            <div class="card-body ">
+                <ul>
+                    <li style=" ">
+                        <p style="margin-left: 2%; font-size: smaller; ">Millones de opiniones de huéspedes verificadas</p>
+                    </li>
+                    <li style=" ">
+                        <p style="margin-left: 2%; font-size: smaller; ">Configura las alertas de precios para realizar un seguimiento de precios</p>
+                    </li>
+                    <li style=" ">
+                        <p style="margin-left: 2%; font-size: smaller; ">Crea una cuenta para acceder a ofertas exclusivas</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <br>
+    </div>
+
+    <!-- Modal de Agregar un eventos -->
+    <div class="modal fade" id="AgregarUnEventoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Agregar un nuevo evento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="inputNombre" class="form-label">Nombre del evento</label>
+                            <input type="email" class="form-control" id="inputNombre" name="nombre" #nombre="ngModel" [(ngModel)]="IdEventoModel.nombre">
+                        </div>
+                        <div class="mb-3">
+                            <label for="InputTipoDeEvento" class="form-label">Tipo de evento</label>
+                            <input type="email" class="form-control" id="InputTipoDeEvento" name="tipodeevento" #tipodeevento="ngModel" [(ngModel)]="IdEventoModel.tipodeevento">
+                            <div id="emailHelp" class="form-text">Solo puedes ingresar: Evento VIP y Evento Extraordinario</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="InputCantidadDePersonas" class="form-label">Cantidad De Personas</label>
+                            <input type="email" class="form-control" id="InputCantidadDePersonas" name="cantidadepersonas" #cantidadepersonas="ngModel" [(ngModel)]="IdEventoModel.cantidadepersonas">
+                        </div>
+                        <div class=" mb-3 ">
+                            <label for="InputDetalles " class="form-label ">Detalles</label>
+                            <input type="email " class="form-control " id="InputDetalles " name="detalles" #detalles="ngModel" [(ngModel)]="IdEventoModel.detalles">
+                        </div>
+                        <div class="mb-3 ">
+                            <label for="InputValor " class="form-label ">Valor</label>
+                            <input type="email " class="form-control " id="InputValor " name="valor" #valor="ngModel" [(ngModel)]="IdEventoModel.valor">
+                        </div>
+                        <div class="mb-3 ">
+                            <label for="InputImagen " class="form-label ">Imagenes</label>
+                            <input type="email " class="form-control " id="InputImagen " name="imagen" #imagen="ngModel" [(ngModel)]="IdEventoModel.imagen">
+                            <div id="emailHelp" class="form-text">Para poder ingresar una imagen debe ingresar la url de la imagen</div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer ">
+                    <button type="button " class="btn btn-secondary " data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button " class="btn btn-primary " data-bs-dismiss="modal" (click)="AgregarEvento()">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!------------- Modal para las habitaciones ------------>
+
+    <div class="modal fade" id="AgregarUnHabitacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Agregar Una Habitación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="inputnombre" class="form-label">Nombre de la habitación:</label>
+                            <input type="email" class="form-control" id="inputnombre" name="nombre" #nombre="ngModel" [(ngModel)]="IdHabitacionModel.nombre">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputTipoHabitacion" class="form-label">Tipo habitacion:</label>
+                            <input type="email" class="form-control" id="inputTipoHabitacion" name="TipoHabitacion" #TipoHabitacion="ngModel" [(ngModel)]="IdHabitacionModel.TipoHabitacion">
+                            <div id="emailHelp" class="form-text">Solo puedes ingresar los datos: Habitaciones matrimoniale, Habitaciones familiares, Habitaciones compartidas y Suite principal</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputCuartos" class="form-label">Cuartos:</label>
+                            <input type="email" class="form-control" id="inputCuartos" name="Cuartos" #Cuartos="ngModel" [(ngModel)]="IdHabitacionModel.Cuartos">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputcantidaddepersonas" class="form-label">Cantidad de personas:</label>
+                            <input type="email" class="form-control" id="inputcantidaddepersonas" name="cantidaddepersonas" #cantidaddepersonas="ngModel" [(ngModel)]="IdHabitacionModel.cantidaddepersonas">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputdetalles" class="form-label">Detalles:</label>
+                            <input type="email" class="form-control" id="inputdetalles" name="detalles" #detalles="ngModel" [(ngModel)]="IdHabitacionModel.detalles">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputvalor" class="form-label">Valor en $:</label>
+                            <input type="email" class="form-control" id="inputvalor" name="valor" #valor="ngModel" [(ngModel)]="IdHabitacionModel.valor">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputimagen" class="form-label">Imagen:</label>
+                            <input type="email" class="form-control" id="inputimagen" name="imagen" #imagen="ngModel" [(ngModel)]="IdHabitacionModel.imagen">
+                            <div id="emailHelp" class="form-text">Solo puedes ingresar una imagen si es un url</div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="AgregarHabitacion()">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--- Modal para Eliminar El Hotel -->
+    <div class="modal fade" id="modaleliminarhotel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Eliminar este hotel</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Si elimina este hotel tambien se iliminara las habitaciones y los eventos de el como tambien los comentarios pertenecientes. ¿Seguro que desea eliminar este hotel?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Si</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
